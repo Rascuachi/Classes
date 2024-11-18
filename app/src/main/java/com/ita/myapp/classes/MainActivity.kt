@@ -9,17 +9,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.insets.ProvideWindowInsets
 import com.ita.myapp.classes.ui.screens.APisScreen
 import com.ita.myapp.classes.ui.screens.HomeScreen
 import com.ita.myapp.classes.ui.screens.ComponentsScreen
-import com.ita.myapp.classes.ui.screens.MenuScreen
 import com.ita.myapp.classes.ui.screens.LoginScreen
-import com.google.accompanist.insets.ProvideWindowInsets
 import com.ita.myapp.classes.ui.biometrics.BiometricsScreen
 import com.ita.myapp.classes.ui.location.MapsSearchView
 import com.ita.myapp.classes.ui.screens.CameraScreen
@@ -29,11 +27,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // Establecer contenido usando Jetpack Compose
         setContent {
             ProvideWindowInsets {
-
                 ComposeMultiScreenApp(this)
             }
         }
@@ -51,11 +47,9 @@ fun ComposeMultiScreenApp(activity: AppCompatActivity) {
 @Composable
 fun SetupNavGraph(navController: NavHostController, activity: AppCompatActivity) {
     NavHost(navController = navController, startDestination = "biometrics") {
-        composable("menu") { MenuScreen(navController) }
         composable("home") { HomeScreen(navController) }
         composable("components") { ComponentsScreen(navController) }
-        composable("biometrics"){ BiometricsScreen(navController = navController, activity = activity) }
-
+        composable("biometrics") { BiometricsScreen(navController = navController, activity = activity) }
         composable("login") { LoginScreen(navController) }
         composable("apis") { APisScreen(navController) }
         composable("MapsSearchView/{lat}/{long}/{address}") { backStackEntry ->
@@ -66,7 +60,6 @@ fun SetupNavGraph(navController: NavHostController, activity: AppCompatActivity)
         }
         composable("CameraScreen") {
             CameraScreen(context = LocalContext.current)
-
         }
     }
 }

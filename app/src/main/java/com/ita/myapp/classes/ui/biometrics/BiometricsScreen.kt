@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,6 +56,14 @@ fun BiometricsScreen(navController: NavController, activity: AppCompatActivity) 
             }
         }
 
+        // Automatically trigger biometric authentication on screen load
+        LaunchedEffect(Unit) {
+            promptManager.showBiometricPrompt(
+                title = "Sample prompt",
+                description = "Sample prompt description"
+            )
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -64,16 +71,6 @@ fun BiometricsScreen(navController: NavController, activity: AppCompatActivity) 
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Simple button to start biometric authentication
-            Button(onClick = {
-                promptManager.showBiometricPrompt(
-                    title = "Sample prompt",
-                    description = "Sample prompt description"
-                )
-            }) {
-                Text(text = "Authenticate")
-            }
-
             biometricResult?.let { result ->
                 // Handle biometric result and display feedback
                 Text(

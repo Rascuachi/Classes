@@ -3,12 +3,8 @@ package com.ita.myapp.classes.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-//import androidx.compose.foundation.layout.BoxScopeInstance.align
 import androidx.compose.foundation.layout.Column
-//import androidx.compose.foundation.layout.FlowColumnScopeInstance.align
-//import androidx.compose.foundation.layout.FlowRowScopeInstance.align
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -99,8 +95,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role.Companion.Switch
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -143,10 +137,7 @@ fun ComponentsScreen(navController: NavController) {
         MenuModel(14,"Bars","Bars",Icons.Filled.Person),
         MenuModel(15,"Adaptive","Adaptive",Icons.Filled.Warning)
     )
-    // In order to support horizontal page view change, remember Saveable
     var component by rememberSaveable{ mutableStateOf("") } //Can assign a value
-    // A reactive component to UI COMPONENTS
-    // A global variable that its state can by updated using buttons
 
     var drawerState = rememberDrawerState(initialValue= DrawerValue.Closed)
     val scope = rememberCoroutineScope() //Update drawer state, is it closed?
@@ -177,187 +168,7 @@ fun ComponentsScreen(navController: NavController) {
                         )
                     }
                 }
-                //Show content 1
-                /*NavigationDrawerItem(label = { Text("Content 1") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Content1"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-                // Show content 2
-                NavigationDrawerItem(label = { Text("Content 2") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Content2"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )*/
-                //Buttons
-                /*NavigationDrawerItem(label = { Text("Buttons") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Buttons"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                //Floating
-                NavigationDrawerItem(label = { Text("Floating Buttons") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Floating"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                // Chips
-                NavigationDrawerItem(label = { Text("Chips") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Chips"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-
-                //Progress()
-                NavigationDrawerItem(label = { Text("Progress") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Progress"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-                //Sliders()
-                NavigationDrawerItem(label = { Text("Sliders") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Sliders"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-                //Switches()
-                NavigationDrawerItem(label = { Text("Switches") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Switches"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                //Badges
-                NavigationDrawerItem(label = { Text("Badges") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Badges"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-
-                //TimePickers
-                NavigationDrawerItem(label = { Text("TimePickers") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="TimePickers"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                //DatePickers
-                NavigationDrawerItem(label = { Text("DatePickers") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="DatePickers"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                //AlertDialogs
-                NavigationDrawerItem(label = { Text("AlertDialogs") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="AlertDialogs"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                //SnackBars
-                NavigationDrawerItem(label = { Text("SnackBars") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="SnackBars"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )
-
-                //Bars
-                NavigationDrawerItem(label = { Text("Bars") }, //TITLE OF BUTTON //fist item
-                    selected = false //is selected?
-                    , onClick = {
-                        component="Bars"
-                        scope.launch {
-                            drawerState.apply {
-                                close() // Close drawer or side menu
-                            }
-                        }
-                    }
-                )*/
             }
-
         }) {
         Column{
             when(component){
@@ -406,20 +217,9 @@ fun ComponentsScreen(navController: NavController) {
                 "Adaptive"->{
                     Adaptive()
                 }
-
-
             }
-            /*Text(text = component)
-            Text(text="This is the Components")
-            Button(onClick = { navController.navigate("menu")}) {
-            }
-            Content1()
-            Content2()*/
         }
-
     }
-
-
 }
 
 @Preview(showBackground = true)
@@ -923,42 +723,18 @@ private fun Bars() {
         }
 
         var post = arrayOf(
-            PostModel(1,"Title1","Text1",painterResource(R.drawable.zi)),
-            PostModel(2,"Title2","Text2",painterResource(R.drawable.zi)),
-            PostModel(3,"Title3","Text3",painterResource(R.drawable.zi)),
-            PostModel(4,"Title4","Text4",painterResource(R.drawable.zi)),
-            PostModel(5,"Title5","Text5",painterResource(R.drawable.zi)),
-            PostModel(6,"Title6","Text6",painterResource(R.drawable.zi)),
-            PostModel(7,"Title7","Text7",painterResource(R.drawable.zi)),
-            PostModel(8,"Title8","Text8",painterResource(R.drawable.zi)),
-            PostModel(9,"Title9","Text9",painterResource(R.drawable.zi)),
-            PostModel(10,"Title10","Text10",painterResource(R.drawable.zi)),
+            PostModel(1,"Title1","Text1",painterResource(R.drawable.radio)),
+            PostModel(2,"Title2","Text2",painterResource(R.drawable.radio)),
+            PostModel(3,"Title3","Text3",painterResource(R.drawable.radio)),
+            PostModel(4,"Title4","Text4",painterResource(R.drawable.radio)),
+            PostModel(5,"Title5","Text5",painterResource(R.drawable.radio)),
+            PostModel(6,"Title6","Text6",painterResource(R.drawable.radio)),
+            PostModel(7,"Title7","Text7",painterResource(R.drawable.radio)),
+            PostModel(8,"Title8","Text8",painterResource(R.drawable.radio)),
+            PostModel(9,"Title9","Text9",painterResource(R.drawable.radio)),
+            PostModel(10,"Title10","Text10",painterResource(R.drawable.radio)),
         )
-        //Posts(arrayPosts = post)
         PostGrid(arrayPosts = post)
-
-
-        //PostCard(1,"This is the card Title","This is the card Text",painterResource(R.drawable.sushi))
-        /*Column( // Inside Content
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(10.dp, 90.dp, 10.dp, 50.dp) // Considering space of bars
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()) // To scroll only the content
-        ){ //Entire content
-
-            Text(
-                text = stringResource(id = R.string.text_card),
-                color = Color.White,
-                fontSize = 16.sp
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            HorizontalDivider(thickness = 2.dp)
-
-            //OTHER ELEMENTS
-            Posts(post)
-
-        }*/
         Row( //Bottom Nav Bar
             modifier= Modifier
                 .align(Alignment.BottomCenter)
@@ -1018,15 +794,10 @@ private fun Bars() {
 @Composable
 fun Posts(arrayPosts : Array<PostModel>,adaptive:String){
     LazyColumn(
-        //LazyRow(
-        /*modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)*/
+
         modifier = Modifier
-            //.align(Alignment.TopCenter)
             .padding(10.dp, 90.dp, 10.dp, 50.dp) // Considering space of bars
             .fillMaxSize()
-        //.verticalScroll(rememberScrollState()) // To scroll only the content
     ){
         items(arrayPosts){ // For each
                 post ->
@@ -1047,14 +818,10 @@ fun Posts(arrayPosts : Array<PostModel>,adaptive:String){
 fun PostGrid(arrayPosts : Array<PostModel>){
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 128.dp),
-        /*modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)*/
+
         modifier = Modifier
-            //.align(Alignment.TopCenter)
             .padding(10.dp, 90.dp, 10.dp, 50.dp) // Considering space of bars
             .fillMaxSize()
-        //.verticalScroll(rememberScrollState()) // To scroll only the content
     ){
         items(arrayPosts){ // For each
                 post ->
@@ -1074,32 +841,17 @@ fun Adaptive(){
     var height = currentWindowAdaptiveInfo().windowSizeClass.windowHeightSizeClass
     var width = currentWindowAdaptiveInfo().windowSizeClass.windowWidthSizeClass
 
-    /**
-     * Android handles 3 predifined dimensions
-     *
-     * COMPACT
-     * Compact width < 600dp Phone portrait
-     * Compact height < 480dp Phone landscape
-     *
-     * MEDIUM
-     * Medium width >= 600dp and width <840dp Tablets  portrait
-     * Medium height >=480dp and height < 900dp Tablets landscape or phone portrait
-     *
-     * EXPANDED
-     * Expanded width > 840dp Tablet landscape
-     * Expanded height > 900.dp Tablet in portrait
-     */
     var post = arrayOf(
-        PostModel(1,"Title1","Text1",painterResource(R.drawable.zi)),
-        PostModel(2,"Title2","Text2",painterResource(R.drawable.zi)),
-        PostModel(3,"Title3","Text3",painterResource(R.drawable.zi)),
-        PostModel(4,"Title4","Text4",painterResource(R.drawable.zi)),
-        PostModel(5,"Title5","Text5",painterResource(R.drawable.zi)),
-        PostModel(6,"Title6","Text6",painterResource(R.drawable.zi)),
-        PostModel(7,"Title7","Text7",painterResource(R.drawable.zi)),
-        PostModel(8,"Title8","Text8",painterResource(R.drawable.zi)),
-        PostModel(9,"Title9","Text9",painterResource(R.drawable.zi)),
-        PostModel(10,"Title10","Text10",painterResource(R.drawable.zi)),
+        PostModel(1,"Title1","Text1",painterResource(R.drawable.radio)),
+        PostModel(2,"Title2","Text2",painterResource(R.drawable.radio)),
+        PostModel(3,"Title3","Text3",painterResource(R.drawable.radio)),
+        PostModel(4,"Title4","Text4",painterResource(R.drawable.radio)),
+        PostModel(5,"Title5","Text5",painterResource(R.drawable.radio)),
+        PostModel(6,"Title6","Text6",painterResource(R.drawable.radio)),
+        PostModel(7,"Title7","Text7",painterResource(R.drawable.radio)),
+        PostModel(8,"Title8","Text8",painterResource(R.drawable.radio)),
+        PostModel(9,"Title9","Text9",painterResource(R.drawable.radio)),
+        PostModel(10,"Title10","Text10",painterResource(R.drawable.radio)),
     )
     if(width == WindowWidthSizeClass.COMPACT){
         Posts(post, "PhoneP") //PhoneP = Phone PORTRAIT
@@ -1108,5 +860,4 @@ fun Adaptive(){
     }else{
         Posts(post, "PhoneL")
     }
-    //Text(text=WindowsSize.toString())
 }
