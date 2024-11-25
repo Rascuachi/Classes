@@ -21,6 +21,7 @@ import com.ita.myapp.classes.ui.screens.LoginScreen
 import com.ita.myapp.classes.ui.biometrics.BiometricsScreen
 import com.ita.myapp.classes.ui.location.MapsSearchView
 import com.ita.myapp.classes.ui.screens.CameraScreen
+import com.ita.myapp.classes.ui.screens.ManageServiceScreen
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -60,6 +61,11 @@ fun SetupNavGraph(navController: NavHostController, activity: AppCompatActivity)
         }
         composable("CameraScreen") {
             CameraScreen(context = LocalContext.current)
+        }
+        composable("manage-service/{serviceId}"){backStackEntry ->
+            val serviceId = backStackEntry.arguments?.getString("serviceId")
+            ManageServiceScreen(navController, serviceId = serviceId)
+
         }
     }
 }
