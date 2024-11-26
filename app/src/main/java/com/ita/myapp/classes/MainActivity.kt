@@ -2,7 +2,9 @@ package com.ita.myapp.classes
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.Surface
@@ -14,6 +16,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.ita.myapp.classes.data.model.database.AppDatabase
+import com.ita.myapp.classes.data.model.database.DatabaseProvider
 import com.ita.myapp.classes.ui.screens.APisScreen
 import com.ita.myapp.classes.ui.screens.HomeScreen
 import com.ita.myapp.classes.ui.screens.ComponentsScreen
@@ -24,10 +28,16 @@ import com.ita.myapp.classes.ui.screens.CameraScreen
 import com.ita.myapp.classes.ui.screens.ManageServiceScreen
 
 class MainActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.O)
+    lateinit var database: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        try{
+            database = DatabaseProvider.getDatabase(this)
+            Log.d("DB","Database loaded succesfully")
+        }catch(exception:Exception){
+            Log.d("DB","error:$exception")
+        }
+        enableEdgeToEdge()
         // Establecer contenido usando Jetpack Compose
         setContent {
             ProvideWindowInsets {
