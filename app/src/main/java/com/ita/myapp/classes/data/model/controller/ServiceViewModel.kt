@@ -14,7 +14,7 @@ class ServiceViewModel : ViewModel() {
     fun getServices(onResult: (Response<List<ServiceModel>>) -> Unit) {
         viewModelScope.launch {
             try {
-                val response = api.getServices()
+                val response = api.getService()
                 onResult(response)
             } catch (exception: Exception) {
                 exception.printStackTrace()
