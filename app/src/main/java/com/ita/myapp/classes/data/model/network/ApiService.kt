@@ -11,7 +11,7 @@ import retrofit2.http.Path
 
 interface ApiService {
     @GET("service")
-    suspend fun getService(): Response<List<ServiceModel>>
+    suspend fun getServices(): Response<List<ServiceModel>>
 
     @GET("service/{id}")
     suspend fun getService(@Path("id") id: Int): Response<ServiceModel>
@@ -25,3 +25,4 @@ interface ApiService {
     @DELETE("service/{id}")
     suspend fun deleteService(@Path("id") id: Int): Response<ServiceModel>
 }
+

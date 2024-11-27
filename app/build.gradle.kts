@@ -124,6 +124,8 @@ dependencies {
     implementation ("androidx.activity:activity-compose:1.7.2")
     debugImplementation ("androidx.compose.ui:ui-tooling:1.7.5")
     implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
 
     //SQL Lite
     val room_version = "2.6.1"
